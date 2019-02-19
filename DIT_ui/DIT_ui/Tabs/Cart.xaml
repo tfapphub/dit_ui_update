@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:DIT_ui.Models;assembly=DIT_ui"
+             x:Class="DIT_ui.Tabs.Cart">
+    <ContentPage.Title>Sepet</ContentPage.Title>
+
+    <ContentPage.BindingContext>
+        <models:UrunListe/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView HasUnevenRows="true" ItemsSource="{Binding Urünler}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="White" CornerRadius="20" HasShadow="True" Margin="20,10,20,10" >
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Image Source="{Binding fotoUrl}" VerticalOptions="FillAndExpand" WidthRequest="65" Aspect="AspectFill" HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" Margin="20,5,0,0">
+                                        <Label Text="{Binding ürünAdi}"  FontFamily="{StaticResource BebasNeue-Regular}" FontSize="30" TextColor="Black"/>
+                                        <Label Text="{Binding aciklama}"  FontFamily="{StaticResource BebasNeue-Regular}" FontSize="20" TextColor="Silver"/>
+                                        <Label Text="{Binding miktar}"  FontFamily="{StaticResource BebasNeue-Regular}" FontSize="20" TextColor="Silver"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="-20" HorizontalOptions="EndAndExpand">
+                                        <Button x:Name="btn_güncelle" Text="Güncelle" BackgroundColor="Transparent" TextColor="DarkGreen" FontSize="20" FontFamily="{StaticResource BebasNeue-Regular}" Clicked="Btn_güncelle_OnClicked"/>
+                                        <Button x:Name="btn_sil" Text="Sil" BackgroundColor="Transparent" TextColor="DarkRed" FontSize="20" FontFamily="{StaticResource BebasNeue-Regular}" Clicked="Btn_sil_OnClicked"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
